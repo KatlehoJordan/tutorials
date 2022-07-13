@@ -6,9 +6,18 @@ Vim is a powerful text editor. I will be trying to use a Vim emulator in VS Code
 
 Downloaded the `.zip` file for neovim put it in program files. Added a line of code to the `settings.json` file to point to the path and had to use extra backslashes to escape the backslashes in the path.
 
+Specifically:
+```
+    "vscode-neovim.neovimExecutablePaths.win32": "C:\\Program Files\\nvim-win64\\bin\\nvim.exe",
+```
+
+I also modified the behavior of `ctrl` + `h` in the VS Code keyboard shortcuts, since the neovim extension set this up to delete left, but I prefer the find & replace functionality of VS Code.
+
 ## Customizations I made for VS Code Emulation of Vim
 
 I followed the setup tutorial for within VS Code - https://www.youtube.com/watch?v=h-epcklOC_g&ab_channel=SuboptimalEngineer  
+
+Note that using the VS Code Emulation of Vim, instead of VS Code Neovim Extension, results in needing to make many more customizations, and the end result is still that some key combinations conflict between the Vim emulator and how you would expect things to behave in VS Code; thus, I recommend sticking to the neovim implementation.
 
 Mapped `j` + `k` and `k` + `j` to `<Esc>` in 'NORMAL' and 'VISUAL' modes since `<Esc>` has other uses in VS Code.
 
@@ -117,10 +126,11 @@ The command to exit Vim is `:q!`. The `:` initiates a command string. The `q` me
 
 ## 'NORMAL' mode
 
-If you ever want to get back to 'NORMAL' mode, from within vim you would press 'Esc' key, but from within VS code you can use:
+If you ever want to get back to 'NORMAL' mode, from within vim you would press 'Esc' key. However, depending on if you set up a keymap switch with caps lock (see software for that below) and if you are using the Vim emulator or neovim, you will get back to 'NORMAL' mode in different ways.
 
-`j` `k` - escape to 'NORMAL' mode  
-`k` `j` - escape to 'NORMAL' mode  
+If you did not swap the keymappings for `Esc` and `CapsLock` but are using neovim: press `Esc`.
+If you swapped the keymappings for `Esc` and `CapsLock` and are using neovim: press `CapsLock`.
+If you did not swap the keymappings for `Esc` and `CapsLock` and are using the vim emulator, then if you followed the instructions above in this document for setting vs code keybindings, press in rapid succession either `j` then `k` or `k` then `j`.
 
 ## Operators and motions
 
@@ -193,21 +203,26 @@ Using numbers, motions can be modified. For example:
 `dw` - delete rest of the current word (without entering 'INSERT' mode), and store the deleted item in the 'Vim register'
 `diw` - delete word, regardless of where the cursor is (without entering 'INSERT' mode), and store the deleted item in the 'Vim register'
 `di<bracket or quotation>` - delete contents within brackets (without entering into 'INSERT' mode), and store the deleted item in the 'Vim register'
-`d$` - delete from cursor through the end of the line, and store the deleted item in the 'Vim register'
+`D` - delete from cursor through the end of the line, and store the deleted item in the 'Vim register'
+`d$` - same as `D`
 `d0` - delete from cursor through the beginning of the line, and store the deleted item in the 'Vim register'
 `de` - delete from cursor through the end of the current word, and store the deleted item in the 'Vim register'
 `cw` - change word
 `ciw` - change inside word
 `ci<bracket or quotation>` - change inside brackets
-`c$` - change from cursor through the end of the line
+`C` - change from cursor through the end of the line
+`c$` - same as `C`
 `c0` - chage from cursor through the end of the line
 `ce` - change from cursor through the end of the current word
-`yw` - when in 'NORMAL' mode, 'yank' up to the next word
-`yiw` - when in 'NORMAL' mode, 'yank' the word the cursor is inside of
-`yi<bracket or quotation>` - when in 'NORMAL' mode, 'yank' contents within brackets
-`y$` - when in 'NORMAL' mode, 'yank' contents within brackets
-`y0` - when in 'NORMAL' mode, 'yank' from cursor through the end of the line
-`ye` - when in 'NORMAL' mode, 'yank' from cursor through the end of the current word
+`cc` - change the entire line
+`yw` - 'yank' up to the next word
+`yiw` - 'yank' the word the cursor is inside of
+`yi<bracket or quotation>` - 'yank' contents within brackets
+`Y` - 'yank' from cursor through the end of the line
+`y$` - same as `Y`
+`y0` - 'yank' from cursor through the start of the line
+`ye` - 'yank' from cursor through the end of the current word
+`yy` - 'yank' the entire line
 
 ## Other functionality
 
@@ -224,20 +239,17 @@ Using numbers, motions can be modified. For example:
 
 ## 'VISUAL' mode  
 
-Use similar keys as in 'NORMAL' mode to make a selection
-`y` - yank selection, and store the yanked item in the 'Vim register'
-`yy` - yank entire line from the cursor, and store the yanked item in the 'Vim register'
-`Y` - yank entire line, and store the yanked item in the 'Vim register'
-`yi<bracket or quotation>` - yank from inside bracket, and store the yanked item in the 'Vim register'
+Use similar keys as in 'NORMAL' mode to make a selection, then can use the various versions of 'yanking' to move the contents to the vim register.
 `shift` + `v` - launch 'VISUAL LINES' mode to select multiple lines
 `ctrl` + `v` - launch 'VISUAL BLOCKS' mode to select multiple columns
-`d` - from within 'VISUAL' mode will delete the selected text
 
 ## Commands
 
 Commands end with pressing the `enter` key. They often start by using the `:`, but some are initiated with other keys.
 
 For commands that are initiated with `:`, one can use `ctrl` + `d` in order to get auto-complete suggestions for commands. For example, `:e` followed by `ctrl` + `d` will show commands such as `earlier`, `echo`, `echoconsole`, etc. Furthermore, `tab` can then be used to provide tab-completion. Note that this works in Vim, but not in the Vim emulator in VS Code.
+
+Also note that not all of these commands have been tested using the neovim implementation in VS Code, so it may be just as easy to use the VS Code functions (by putting yourself in insert mode then using VS Code keyboard shortcuts) if the following commands do not work as well.
 
 `:w` - save changes to the open file
 `:wq` - save changes to the open file and quit Vim
@@ -282,7 +294,7 @@ To launch Vim, from a terminal, use `vim`.
 `:help vimrc-intro` - get help creating your own vimrc profile
 `:help user-manual` - opens the Vim user manual, which is extensive
 A book dedicated to vim - http://iccf-holland.org/click5.html
-For remapping the keyboard in Windows 10, use Sharpkeys although you will still need to map the jk/kj to escape in the VS Code settings since the escape key haas different behavior in VS code by default - https://github.com/randyrants/sharpkeys/releases
+For remapping the keyboard in Windows 10, use Sharpkeys although, if you use the Vim emulator (and not neovim and the neovim extension), you will still need to map the jk/kj to escape in the VS Code settings since the escape key has different behavior in VS code by default - https://github.com/randyrants/sharpkeys/releases
 For remapping the keyboard in Mac, this site is suggested - https://pqrs.org/osx/karabiner/seil.html.en
 It is recommended to modify the key repeat rate. In Windows, search "keyboard" and modify the 'repeat delay' and 'repeat rate'. In OSx, 
 Vim cheatsheet - http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html
