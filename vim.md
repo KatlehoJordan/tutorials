@@ -11,7 +11,7 @@ Specifically:
     "vscode-neovim.neovimExecutablePaths.win32": "C:\\Program Files\\nvim-win64\\bin\\nvim.exe",
 ```
 
-I also modified the behavior of `ctrl` + `h` in the VS Code keyboard shortcuts, since the neovim extension set this up to delete left, but I prefer the find & replace functionality of VS Code.
+I also modified the behavior of `ctrl` + `h` and `ctrl` + `w` in the VS Code keyboard shortcuts, since the neovim extension set this up to delete left, but I prefer the find & replace functionality of VS Code.
 
 ## Customizations I made for VS Code Emulation of Vim
 
@@ -272,6 +272,10 @@ Also note that not all of these commands have been tested using the neovim imple
 `:!<shell command>` - how to run shell commands from within Vim - does not seem to work from VS Code Vim emulator, but does work from Vim (try `:! ls` or `:! pwd`)
 `:r` - starts 'retrieving' text to be inserted after the cursor. Can be used as in `:r <FILENAME>` or `:r !<shell command>`, etc.
 
+## Recording a macro
+
+Type `q` then `<any key>` to start recording a macro. You stop recording when you press `q` again. Now, if you press `@` + `<any key>` you will redo what you recorded.
+
 ## Settings 
 
 `:set number` - gives absolute line number for the current line in the gutter
@@ -280,8 +284,10 @@ Also note that not all of these commands have been tested using the neovim imple
 `:set ic` - ignores case when searching
 `:set hlsearch` - highlights matches when searching
 `:set incsearch` - highlights strings you are searching for as you type the string
+`:noh` - removes highlighting from the previous search
 `:set cp` - puts Vim into 'compatible' mode, which is usually to be avoided since it disables most of the features added by Vim that extend the vi text editor
 `:set no<setting>` - shuts off the given `<setting>`
+`:set inv<setting>` - in neovim, inverts the value of the given `<setting>`
 
 ## Getting more help
 
@@ -290,6 +296,8 @@ The following are some help commands that can be run from Vim. These do not work
 To launch Vim, from a terminal, use `vim`.
 
 `:help` - opens help text file in a new pane
+`ctrl` + `]` - from within the help menu, jumps to tagged section
+`ctrl` + `t` - if you jumped to a tagged section, this will jump you back to where you were before
 `ctrl` + `w` then `ctrl` + `w` again - cycles through open text file panes
 `:help vimrc-intro` - get help creating your own vimrc profile
 `:help user-manual` - opens the Vim user manual, which is extensive
@@ -305,3 +313,7 @@ A list of keyboard shortcuts - https://pqrs.org/osx/karabiner
 https://vim.rtorr.com
 Plugins for development if vim becomes your primary text editor include githumb.com/kien/ctrlp.vim ; github.com/scrooloose/nerdtree , github.com/rking/ag.vim
 If you run neovim, to run vimtutor, use `:Tutor` or `:Tutor vim-01-beginner`
+
+## Next steps
+
+Opening the help menu and following the instructions in there in terms of reading through the entire manual. After that, start using nvim at work in VS Code.
