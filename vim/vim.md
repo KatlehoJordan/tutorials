@@ -236,6 +236,7 @@ Using numbers, motions can be modified. For example:
 `v` - toggle 'VISUAL' mode  
 `p` - print previously deleted or 'yanked' text after the cursor
 `P` - print previously deleted or 'yanked' text before the cursor
+`ZZ` - exit the currently opened help window without exiting vim
 
 ## 'VISUAL' mode  
 
@@ -316,4 +317,5 @@ If you run neovim, to run vimtutor, use `:Tutor` or `:Tutor vim-01-beginner`
 
 ## Next steps
 
+Run `:help user_toc.txt` to browse sections that could be useful or interesting. Then start using vim at home to do some of the projects shown by NeuralNine. 
 Opening the help menu and following the instructions in there in terms of reading through the entire manual. After that, start using nvim at work in VS Code.
