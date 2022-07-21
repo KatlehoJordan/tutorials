@@ -11,7 +11,7 @@ Specifically:
     "vscode-neovim.neovimExecutablePaths.win32": "C:\\Program Files\\nvim-win64\\bin\\nvim.exe",
 ```
 
-I also modified the behavior of `ctrl` + `h` and `ctrl` + `w` in the VS Code keyboard shortcuts, since the neovim extension set this up to delete left, but I prefer the find & replace functionality of VS Code.
+I also modified the behavior of `ctrl` + `h` and `ctrl` + `w` in the VS Code keyboard shortcuts.
 
 ## Customizations I made for VS Code Emulation of Vim
 
