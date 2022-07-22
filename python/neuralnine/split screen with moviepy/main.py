@@ -23,3 +23,9 @@ clip_4_vids_2_rows = clips_array([[clip1, clip2], [clip3, clip4]])
 clip_2_vids.write_videofile('2_vids.mp4')
 clip_4_vids.write_videofile('4_vids.mp4')
 clip_4_vids_2_rows.write_videofile('4_vids_2_rows.mp4')
+
+# Note that all 3 files were made without a problem.
+# Then I could play the first one without a problem.
+# Attempts to play the other two led to "Server execution failed".
+# After this, trying to play the first or the original files also led to the same error.
+# Tried restarting computer.
