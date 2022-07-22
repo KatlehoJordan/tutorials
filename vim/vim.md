@@ -319,3 +319,22 @@ If you run neovim, to run vimtutor, use `:Tutor` or `:Tutor vim-01-beginner`
 
 Run `:help user_toc.txt` to browse sections that could be useful or interesting. Then start using vim at home to do some of the projects shown by NeuralNine. 
 Opening the help menu and following the instructions in there in terms of reading through the entire manual. After that, start using nvim at work in VS Code.
+
+## Videos from ThePrimeagen
+
+Video 1 was stuff I already felt very comfortable with, so I am not including the link.
+
+Starting from [video 2](https://www.youtube.com/watch?v=gSHf_b6AWKc&list=PLm323Lc7iSW_wuxqmKx_xxNtJC_hJbQ7R&index=2).
+
+First part of this video was about `o`, `O`, `p`, `P`, `a`, `A`, `I`.
+
+Then he started talking about 'Command mode' with `/`, `n`, `N`.
+
+However, a new shortcut is `*` and `#` to search for whatever is already under your cursor instead of starting with `/`.
+
+He then suggested modifying `.vimrc` with plugins, etc. in order to start getting familiar with the commands while also improving your nvim functionality.
+
+Things I still use VS Code for at this time:
+
+* search whole folder structure for matches (not just the current file)
+* search whole folder structure for files
